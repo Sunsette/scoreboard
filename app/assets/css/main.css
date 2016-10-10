@@ -1,70 +1,144 @@
-html,body {
-    height:100%;
-    padding:0;
-    margin:0;
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
 }
 
-h1{
-  text-align: center;
+h1 {
+    text-align: center;
 }
 
-.main-header{
-  padding: 50px;
-  background-color: #64081f;
+.main-header {
+    padding: 50px;
+    background-color: #64081f;
+    color: #d8a91a;
+}
+
+.main-header h1 {
+    font-size: 5.5em;
+}
+
+.score {
+    font-size: 50px;
+    text-align: center;
+}
+
+.score-points {
+    margin: 0 0.5m;
+}
+
+.team-field {
+    color: #d8a91a;
+    background-color: #8a0526;
+    height: calc(100% - 152px);
+    padding-top: 50px;
+}
+
+.team-field h1 {
+    font-size: 3.0em;
+}
+
+.score span {
+    font-size: 4.4em;
+}
+
+.plus:hover {
+    color: #004600;
+    cursor: pointer;
+}
+
+.minus:hover {
+    color: #d40000;
+    cursor: pointer;
+}
+
+.row {
+    height: 100%;
+}
+
+.team-name {
+    background-color: #8a0526;
+    color: #d8a91a;
+    border: 0;
+  /*  font-size: 2.5rem;*/
+    text-align: center;
+    font-family: inherit;
+}
+
+.text-field-holder {
+    text-align: center;
+}
+
+.team-select {
+    background-color: #8a0526;
+    height: 8vh;
+    color: #d8a91a;
+    border: 0;
+}
+
+.join-block {
   color: #d8a91a;
-}
-
-.main-header h1{
-  font-size: 5.5em;
-}
-
-.score{
-  font-size: 50px;
-  text-align: center;
-}
-
-.score-points{
-  margin: 0 0.5m;
-}
-
-.team-field{
-  color: #d8a91a;
-background-color: #8a0526;
-height: calc(100% - 152px);
-padding-top: 50px;
-}
-
-.team-field h1{
-  font-size: 3.0em;
-}
-
-.score span{
-  font-size: 4.4em;
-}
-
-.plus:hover{
-  color: #004600;
-  cursor: pointer;
-}
-
-.minus:hover{
-  color: #d40000;
-  cursor: pointer;
-}
-
-.row{
-  height: 100%;
-}
-
-.team-name{
   background-color: #8a0526;
-  color: #d8a91a;
-  border: 0;
-          font-size: 2.5rem;
-      text-align: center;
-          font-family: inherit;
 }
 
-.text-field-holder{
-      text-align: center;
+.joined-block {
+    text-align: center;
+    color: #d8a91a;
+    background-color: #8a0526;
+}
+
+
+/*MODAL*/
+
+.answer-modal {
+    height: 87vh;
+    background-color: #64081f;
+    color: #d8a91a;
+}
+
+.answer-modal h1 {
+    margin-top: 25vh;
+}
+
+.answer-modal h3 {
+    text-align: center;
+}
+
+.answer-modal .top-text {
+    padding-top: 5vh;
+}
+
+.answer-modal .bottom-text {
+    margin-top: 25vh;
+}
+
+.answer-modal .bottom-text span {
+    font-size: 1.5em;
+}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    /* Styles */
+    .team-name {
+            font-size: 6vw;
+    }
+    .main-header h1 {
+            font-size: 6vw;
+    }
+    .team-field h1{
+            font-size: 6vw;
+    }
+    .score span{
+            font-size: 6vw;
+    }
+    .team-field{
+          height: 60vw;
+    }
+
+    .joined-block button{
+          height: 56vw;
+              width: 100%;
+    }
 }

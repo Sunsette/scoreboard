@@ -7,6 +7,10 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
         // Sorry! No Web Storage support..
     }
 
+    $scope.user = {
+      name: "Your Name"
+    };
+
     if (window.localStorage.getItem("teamOneScore") === undefined || isNaN(window.localStorage.getItem("teamOneScore")) || window.localStorage.getItem("teamTwoScore") === null) {
         window.localStorage.teamOneScore = 0;
         $scope.teamOne = {
@@ -36,6 +40,9 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
     $scope.firstName = "John";
     $scope.lastName = "Doe";
 
+
+    $scope.teams = [{name: 'Team Null Pointer Exception'}, {name:"Team 404" }];
+
     $scope.teamOne.name = "Team Null Pointer Exception";
     $scope.teamTwo.name = "Team 404";
 
@@ -54,7 +61,7 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
       templateUrl: 'scripts/components/modal/modal.template.html',
       controller: 'modalCtrl',
     //  controllerAs: '$ctrl',
-      size: 'sm',
+      size: 'lg',
       resolve: {
         user: function () {
           return JSON.parse(message.data);
