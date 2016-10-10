@@ -1,0 +1,70 @@
+html,body {
+    height:100%;
+    padding:0;
+    margin:0;
+}
+
+h1{
+  text-align: center;
+}
+
+.main-header{
+  padding: 50px;
+  background-color: #64081f;
+  color: #d8a91a;
+}
+
+.main-header h1{
+  font-size: 5.5em;
+}
+
+.score{
+  font-size: 50px;
+  text-align: center;
+}
+
+.score-points{
+  margin: 0 0.5m;
+}
+
+.team-field{
+  color: #d8a91a;
+background-color: #8a0526;
+height: calc(100% - 152px);
+padding-top: 50px;
+}
+
+.team-field h1{
+  font-size: 3.0em;
+}
+
+.score span{
+  font-size: 4.4em;
+}
+
+.plus:hover{
+  color: #004600;
+  cursor: pointer;
+}
+
+.minus:hover{
+  color: #d40000;
+  cursor: pointer;
+}
+
+.row{
+  height: 100%;
+}
+
+.team-name{
+  background-color: #8a0526;
+  color: #d8a91a;
+  border: 0;
+          font-size: 2.5rem;
+      text-align: center;
+          font-family: inherit;
+}
+
+.text-field-holder{
+      text-align: center;
+}
