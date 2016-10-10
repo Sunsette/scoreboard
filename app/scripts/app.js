@@ -33,8 +33,8 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
         $scope.teamTwo = {
             score: parseInt(window.localStorage.getItem("teamTwoScore"))
         };
-        console.log(window.localStorage.getItem("teamTwoScore"));
-        console.log(isNaN(window.localStorage.getItem("teamTwoScore")));
+        //console.log(window.localStorage.getItem("teamTwoScore"));
+        //console.log(isNaN(window.localStorage.getItem("teamTwoScore")));
     }
 
     $scope.firstName = "John";

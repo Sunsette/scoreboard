@@ -16,10 +16,16 @@ app.get('/', function(req, res, next){
   res.end();
 });
 
+var aWss = expressWs.getWss('/a');
+
+
 app.ws('/', function(ws, req) {
   ws.on('message', function(msg) {
     console.log(msg);
-    ws.send(msg);
+    aWss.clients.forEach(function (client) {
+    client.send(msg);
+  });
+    //ws.send(msg);
   });
   console.log('socket', req.testing);
 });
