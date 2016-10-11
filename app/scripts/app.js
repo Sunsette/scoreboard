@@ -8,7 +8,7 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
     }
 
     $scope.user = {
-      name: "Your Name"
+      name: "Enter Name"
     };
 
     if (window.localStorage.getItem("teamOneScore") === undefined || isNaN(window.localStorage.getItem("teamOneScore")) || window.localStorage.getItem("teamTwoScore") === null) {

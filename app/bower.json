@@ -1,0 +1,21 @@
+{
+  "name": "scoreboard",
+  "homepage": "https://github.com/Sunsette/scoreboard",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Isabella Rodriguez"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "^2.2.0",
+    "magic": "^1.1.0"
+  }
+}
