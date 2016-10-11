@@ -1,3 +1,10 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 html, body {
     height: 100%;
     padding: 0;
@@ -121,6 +128,12 @@ h1 {
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     /* Styles */
+body{
+  overflow: hidden;
+}
+    .main-header{
+          padding: 3vh 25px 3vh 52px;
+    }
     .team-name {
             font-size: 6vw;
     }
@@ -128,17 +141,45 @@ h1 {
             font-size: 6vw;
     }
     .team-field h1{
-            font-size: 6vw;
+              font-size: 0.9em;
     }
     .score span{
             font-size: 6vw;
     }
     .team-field{
-          height: 60vw;
+          height: 40vh;
     }
 
     .joined-block button{
           height: 56vw;
               width: 100%;
+    }
+
+    .joined-block span{
+      display: block;
+      text-align:center;
+    }
+
+    .join-block{
+      text-align: center;
+      height: 50vh;
+    }
+
+    .joined-block{
+      text-align: center;
+      height: 50vh;
+    }
+
+    .join-block span{
+      display: block;
+      text-align:center;
+    }
+
+    .team-name-holder{
+          height: 5vh;
+    }
+
+    .team-select{
+          padding: 0vw 15vw;
     }
 }

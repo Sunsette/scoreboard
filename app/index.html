@@ -24,7 +24,7 @@
             <h1>The Grand Movie Music Quiz </h1>
       </div>
         <div class=" team-field team-one col-xs-6">
-            <div>
+            <div class="team-name-holder">
                 <h1 ng-click="teamOne.edit=true" ng-show="!teamOne.edit"><span ng-show="teamOne.name.length === undefined|| teamOne.name.length < 1" >Team Undefined</span> {{teamOne.name}}</h1>
                 <div class="text-field-holder">
                     <input class="team-name" type="text" ng-placeholder="{{teamOne.name}}" ng-model="teamOne.name" ng-show="teamOne.edit" ng-blur="teamOne.edit=false">
@@ -39,7 +39,7 @@
 
         </div>
         <div class=" team-field team-two col-xs-6">
-            <div>
+            <div class="team-name-holder">
                 <h1 ng-click="teamTwo.edit=true" ng-show="!teamTwo.edit"> <span ng-show="teamTwo.name.length === undefined|| teamTwo.name.length < 1" >Team Undefined 2 </span>  {{teamTwo.name}}</h1>
                 <div class="text-field-holder">
                     <input class="team-name" type="text" placeholder="{{teamTwo.name}}" ng-model="teamTwo.name" ng-show="teamTwo.edit" ng-blur="teamTwo.edit=false">
@@ -53,7 +53,7 @@
         </div>
         <div class=" col-xs-12 join-block" ng-show="!joined">
 
-        <h4> <input class="team-name" type="text" placeholder="Your Name" ng-model="user.name" > member of team
+        <h4> <input class="team-name" type="text" placeholder="Your Name" ng-model="user.name" > <span>member of team</span>
 <select class="team-select" name="singleSelect" id="singleSelect" ng-model="user.team" ng-show="!joined">
  <option value="">---Please select team---</option> <!-- not selected / blank option -->
  <option ng-repeat="team in teams" value="{{team.name}}">{{team.name}}</option> <!-- interpolation -->
@@ -62,7 +62,7 @@
 </h4>
     </div>
     <div class="col-xs-12 joined-block" ng-show="joined">
-      <h3>{{user.name}} member of {{user.team}}</h3>
+      <h3>{{user.name}} <span>member of </span>{{user.team}}</h3>
       <button class="btn btn-warning" ng-click="bing()" ng-show="joined">BING</button>
     </div>
     </div>
