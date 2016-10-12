@@ -20,11 +20,24 @@
 <script src="scripts/components/modal/modal.controller.js" charset="utf-8"></script>
 
 <body>
+  <div class="container-fluid">
+
     <div class="row" ng-app="scoreboard" ng-controller="myCtrl">
-        <div class="main-header col-xs-12">
-            <h1>The Grand Movie Music Quiz </h1>
-        </div>
-        <div class=" team-field team-one col-xs-6">
+      <div class="main-header col-xs-12">
+        <h1>The Grand Movie Music Quiz </h1>
+      </div>
+<div class="col-xs-6">
+      <div class="jumbotron">
+        <h1>Test</h1>
+      </div>
+    </div>
+<div class="col-xs-6">
+    <div class="jumbotron">
+      <h1>Test</h1>
+    </div>
+  </div>
+
+      <!--  <div class=" team-field team-one col-xs-6">
             <div class="team-name-holder">
                 <h1 ng-click="teamOne.edit=true" ng-show="!teamOne.edit"><span ng-show="teamOne.name.length === undefined|| teamOne.name.length < 1" >Team Undefined</span> {{teamOne.name}}</h1>
                 <div class="text-field-holder">
@@ -38,8 +51,8 @@
     <span class="score-editor plus" ng-click="teamOne.score = teamOne.score +1; scoreSound(); addPoint('teamOne', 0)">+</span>
     </h3>
 
-        </div>
-        <div class=" team-field team-two col-xs-6">
+  </div>-->
+      <!--  <div class=" team-field team-two col-xs-6">
             <div class="team-name-holder">
                 <h1 ng-click="teamTwo.edit=true" ng-show="!teamTwo.edit"> <span ng-show="teamTwo.name.length === undefined|| teamTwo.name.length < 1" >Team Undefined 2 </span>  {{teamTwo.name}}</h1>
                 <div class="text-field-holder">
@@ -51,21 +64,22 @@
   <span class="score-points teamTwo">{{teamTwo.score}}</span>
     <span class="score-editor plus" ng-click="teamTwo.score = teamTwo.score +1; scoreSound(); addPoint('teamTwo', 1)">+</span>
     </h3>
-        </div>
-        <div class=" col-xs-12 join-block" ng-show="!joined">
+  </div>-->
+        <!--<div class=" col-xs-12 join-block" ng-show="!joined">
 
             <input class="team-name" type="text" placeholder="Your Name" ng-model="user.name">
             <select class="team-select" name="singleSelect" id="singleSelect" ng-model="user.team" ng-show="!joined">
- <option value="">---Please select team---</option> <!-- not selected / blank option -->
- <option ng-repeat="team in teams" value="{{team.name}}">{{team.name}}</option> <!-- interpolation -->
+ <option value="">---Please select team---</option>
+ <option ng-repeat="team in teams" value="{{team.name}}">{{team.name}}</option>
 </select>
             <button class="btn btn-warning" ng-click="join(); joined=true;" ng-disabled="!user.team">JOIN</button>
-        </div>
-        <div class="col-xs-12 joined-block" ng-show="joined">
+        </div> -->
+      <!--  <div class="col-xs-12 joined-block" ng-show="joined">
             <h3>{{user.name}} <span>member of </span>{{user.team}}</h3>
             <button class="btn btn-warning" ng-click="bing()" ng-show="joined">BING</button>
-        </div>
+        </div>-->
     </div>
+  </div>
 </body>
 
 </html>

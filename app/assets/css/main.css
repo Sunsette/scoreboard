@@ -76,6 +76,15 @@ h1 {
     text-align: center;
 }
 
+.jumbotron{
+      margin-top: 15px;
+      background-color: #8a0526;
+}
+
+.container-fluid{
+  background: #64081f;
+}
+
 .main-header {
     padding: 50px;
     background-color: #64081f;
@@ -85,6 +94,7 @@ h1 {
 
 .main-header h1 {
     font-size: 5.5em;
+    text-shadow: 7px 11px 26px rgb(60, 60, 60);
 }
 
 .score {
