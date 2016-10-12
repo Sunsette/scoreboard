@@ -5,6 +5,7 @@ var expressWs = require('express-ws')(app);
 
 app.use(function (req, res, next) {
   console.log('middleware');
+  console.log("Origin: " + req.origin);
   req.testing = 'testing';
   return next();
 });

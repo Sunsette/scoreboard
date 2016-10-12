@@ -46,7 +46,7 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
     $scope.teamOne.name = "Team Null Pointer Exception";
     $scope.teamTwo.name = "Team 404";
 
-    var ws = new WebSocket("ws://localhost:3030", "echo-protocol");
+    var ws = new WebSocket("ws://192.168.0.13:3030", "echo-protocol");
 
    ws.onopen = function(){
        console.log("Socket has been opened!");
@@ -68,6 +68,11 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
         }
       }
     });
+   };
+
+   ws.onclose = function(event){
+     console.log("Connection closed by server");
+     console.log(event);
    };
 
    $scope.bing = function(){

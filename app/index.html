@@ -28,22 +28,43 @@
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="jumbotron">
-                  <div class="title-holder">
+                    <div class="title-holder">
 
-                  <h1 ng-click="teamOne.edit = true" ng-show="!teamOne.edit" >{{teamOne.name}}</h1>
-                  <input placeholder="Enter Name" ng-model="teamOne.name" ng-show="teamOne.edit" ng-blur="teamOne.edit=false"/>
-                </div>
-                  <h2><span class="pull-left">-</span>{{teamOne.score}}<span class="pull-right">+</span></h2>
+                        <h1 ng-click="teamOne.edit = true" ng-show="!teamOne.edit">{{teamOne.name}}</h1>
+                        <input placeholder="Enter Name" ng-model="teamOne.name" ng-show="teamOne.edit" ng-blur="teamOne.edit=false" />
+                    </div>
+                    <h2><span class="pull-left" ng-click="teamOne.score = teamOne.score -1; reducePoint('teamOne')">-</span>{{teamOne.score}}<span class="pull-right" ng-click="teamOne.score = teamOne.score +1; scoreSound(); addPoint('teamOne', 0)">+</span></h2>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="jumbotron">
-                  <div class="title-holder">
+                    <div class="title-holder">
 
-                    <h1 ng-click="teamTwo.edit = true" ng-show="!teamTwo.edit" >{{teamTwo.name}}</h1>
-                    <input placeholder="Enter Name" ng-model="teamTwo.name" ng-show="teamTwo.edit" ng-blur="teamTwo.edit=false"/>
-                  </div>
-                    <h2><span class="pull-left">-</span>{{teamTwo.score}}<span class="pull-right">+</span></h2>
+                        <h1 ng-click="teamTwo.edit = true" ng-show="!teamTwo.edit">{{teamTwo.name}}</h1>
+                        <input placeholder="Enter Name" ng-model="teamTwo.name" ng-show="teamTwo.edit" ng-blur="teamTwo.edit=false" />
+                    </div>
+                    <h2><span class="pull-left" ng-click="teamTwo.score = teamTwo.score -1; reducePoint('teamTwo')">-</span>{{teamTwo.score}}<span class="pull-right" ng-click="teamTwo.score = teamTwo.score +1; scoreSound(); addPoint('teamTwo', 1)">+</span></h2>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12" ng-show="!joined">
+                <div class="jumbotron">
+                    <div class="join-block">
+
+                        <input placeholder="Enter Name" ng-model="user.name" />
+                        <select class="team-select" name="singleSelect" id="singleSelect" ng-model="user.team" ng-show="!joined">
+                            <option value="">---Please select team---</option>
+                            <option ng-repeat="team in teams" value="{{team.name}}">{{team.name}}</option>
+                        </select>
+                        <button class="btn btn-join" ng-click="joined=true">JOIN</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12" ng-show="joined">
+                <div class="jumbotron">
+                    <div class="info-block">
+                        <h1>{{user.name}} in <span>{{user.team}}</span></h1>
+                        <button class="btn btn-bing" ng-click="bing()">BING!</button>
+                    </div>
                 </div>
             </div>
 
