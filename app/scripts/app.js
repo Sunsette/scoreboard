@@ -1,6 +1,8 @@
 var app = angular.module('scoreboard', ['ui.bootstrap']);
 app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
 
+    var websocketPort = "10.129.8.76";
+
     if (typeof(Storage) !== "undefined") {
         // Code for window.localStorage/sessionStorage.
     } else {
@@ -8,7 +10,7 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
     }
 
     $scope.user = {
-      name: "Enter Name"
+        name: "Enter Name"
     };
 
     if (window.localStorage.getItem("teamOneScore") === undefined || isNaN(window.localStorage.getItem("teamOneScore")) || window.localStorage.getItem("teamTwoScore") === null) {
@@ -41,45 +43,66 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
     $scope.lastName = "Doe";
 
 
-    $scope.teams = [{name: 'Team Null Pointer Exception'}, {name:"Team 404" }];
+    $scope.teams = [{
+        name: 'Team Null Pointer Exception'
+    }, {
+        name: "Team 404"
+    }];
 
     $scope.teamOne.name = "Team Null Pointer Exception";
     $scope.teamTwo.name = "Team 404";
 
-    var ws = new WebSocket("ws://192.168.0.13:3030", "echo-protocol");
+    $scope.guessing = false;
 
-   ws.onopen = function(){
-       console.log("Socket has been opened!");
-   };
+    var ws = new WebSocket("ws://" + websocketPort + ":3030", "echo-protocol");
 
-   ws.onmessage = function(message) {
-      console.log(JSON.parse(message.data));
-      var modalInstance = $uibModal.open({
-      animation: true,
-      ariaLabelledBy: 'modal-title',
-      ariaDescribedBy: 'modal-body',
-      templateUrl: 'scripts/components/modal/modal.template.html',
-      controller: 'modalCtrl',
-    //  controllerAs: '$ctrl',
-      size: 'lg',
-      resolve: {
-        user: function () {
-          return JSON.parse(message.data);
+    ws.onopen = function() {
+        console.log("Socket has been opened!");
+    };
+
+    ws.onmessage = function(message) {
+        console.log(JSON.parse(message.data));
+        if (!$scope.guessing) {
+            $scope.guessing = true;
+            var modalInstance = $uibModal.open({
+                animation: true,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'scripts/components/modal/modal.template.html',
+                controller: 'modalCtrl',
+                //  controllerAs: '$ctrl',
+                size: 'lg',
+                resolve: {
+                    user: function() {
+                        return JSON.parse(message.data);
+                    }
+                }
+            });
+
+            modalInstance.result.then(function(selectedItem) {
+                console.log("In heeree!");
+                $scope.guessing = false;
+            }, function() {
+              //  $scope.guessing = false;
+              $timeout(function(){
+                $scope.guessing = false;
+                console.log("Guessing is now allowed");
+              }, 10000);
+                console.log("Over here");
+            });
         }
-      }
-    });
-   };
+    };
 
-   ws.onclose = function(event){
-     console.log("Connection closed by server");
-     console.log(event);
-   };
+    ws.onclose = function(event) {
+        console.log("Connection closed by server");
+        console.log(event);
+    };
 
-   $scope.bing = function(){
-     console.log($scope.user);
-    ws.send(JSON.stringify($scope.user));
+    $scope.bing = function() {
+        console.log($scope.user);
+        ws.send(JSON.stringify($scope.user));
 
-   };
+    };
 
     $scope.addPoint = function(team, position) {
         // console.log($(".score-points "));
