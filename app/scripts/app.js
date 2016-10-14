@@ -1,7 +1,7 @@
 var app = angular.module('scoreboard', ['ui.bootstrap']);
 app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
 
-    var websocketPort = "10.129.8.76";
+    var websocketPort = "10.129.8.139";
 
     if (typeof(Storage) !== "undefined") {
         // Code for window.localStorage/sessionStorage.

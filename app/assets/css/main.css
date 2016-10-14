@@ -161,6 +161,9 @@ color: #64081f;
 .jumbotron .score-editor:hover{
   color: #ffe763;
 }
+.jumbotron .score-editor{
+  cursor: pointer;
+}
 
 .jumbotron select:hover{
       border: 1px solid #d8a91a;
@@ -179,6 +182,10 @@ color: #64081f;
       text-align: center;
 
 
+}
+
+.title-holder h1{
+  cursor: pointer;
 }
 
 .main-header {
@@ -247,6 +254,15 @@ color: #64081f;
 
 .answer-modal .bottom-text span {
     font-size: 1.5em;
+}
+
+.answer-modal h3{
+  padding-top: 1rem;
+font-size: 3em;
+}
+
+.text-area{
+      margin-bottom: 20vh;
 }
 
 
@@ -379,6 +395,18 @@ font-size: 1.5em;
 
     .team-select {
         padding: 0vw 7vw;
+    }
+
+    .jumbotron.score{
+      padding-right: 0;
+    }
+
+    .score-holder{
+      min-height: 12vh;
+    padding: 1rem;
+    margin-top: -1rem;
+  //  background: #643232;
+    border-radius: 5px;
     }
 
 }
