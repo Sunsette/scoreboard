@@ -100,6 +100,21 @@ h1 {
 
 }
 
+.main-header input {
+    background: #8a0526;
+    border: 0;
+    height: 2.5em;
+    border-radius: 5px;
+    padding: 0 5px;
+    color: #d8a91a;
+    font-size: 2em;
+    text-align: center;
+    margin-top: -1rem;
+    font-size: 2.5em;
+    max-width: 89vw;
+
+}
+
 .jumbotron h1 {
     color: #d8a91a;
     padding-bottom: 1rem;
@@ -193,6 +208,7 @@ color: #64081f;
     background-color: #64081f;
     color: #d8a91a;
     border: 0;
+    text-align: center;
 }
 
 .main-header h1 {
@@ -405,8 +421,8 @@ font-size: 1.5em;
       min-height: 12vh;
     padding: 1rem;
     margin-top: -1rem;
-  //  background: #643232;
-    border-radius: 5px;
+    background: #643232;
+    border-radius: 0px 5px 5px 0px;
     }
 
 }

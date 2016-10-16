@@ -24,12 +24,12 @@
 
         <div class="row" ng-app="scoreboard" ng-controller="myCtrl">
             <div class="main-header col-xs-12">
-                <h1>The Grand Movie Music Quiz </h1>
+                <h1 ng-click="game.edit = true" ng-show="!game.edit">{{game.name}}</h1>
+                <input placeholder="Enter Name" ng-model="game.name" ng-show="game.edit" ng-blur="game.edit=false" />
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="jumbotron score">
                     <div class="title-holder col-xs-8 col-sm-12">
-
                         <h1 ng-click="teamOne.edit = true" ng-show="!teamOne.edit">{{teamOne.name}}</h1>
                         <input placeholder="Enter Name" ng-model="teamOne.name" ng-show="teamOne.edit" ng-blur="teamOne.edit=false" />
                     </div>
