@@ -8,20 +8,26 @@ var MongoClient = require('mongodb').MongoClient,
 // Connection URL
 var url = 'mongodb://localhost:27017/scoreboard';
 
-/*var insertDocuments = function(db, callback) {
-  // Get the documents collection
-  var collection = db.collection('score');
-  // Insert some documents
-  collection.insertMany([
-    {teamOne : 0}, {teamTwo : 0}
-  ], function(err, result) {
-    assert.equal(err, null);
-    assert.equal(2, result.result.n);
-    assert.equal(2, result.ops.length);
-    console.log("Inserted 2 documents into the collection");
-    callback(result);
-  });
-}*/
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json());
+
+app.use(function(req, res, next) {
+    console.log('middleware');
+    console.log("Origin: ");
+    console.log(req.body);
+    req.testing = 'testing';
+    return next();
+});
+
+app.use('/', express.static('app'));
+
+app.get('/', function(req, res, next) {
+    console.log('get route', req.testing);
+    res.end();
+});
 
 var findDocuments = function(db, callback) {
     // Get the documents collection
@@ -50,7 +56,7 @@ var findScores = function(db, callback) {
           };
           scores.push(temp);
         }else{
-        scores.push(docs);  
+        scores.push(docs);
         }
 
         callback(docs);
@@ -58,55 +64,21 @@ var findScores = function(db, callback) {
     return scores;
 }
 
-// Use connect method to connect to the server
-/*MongoClient.connect(url, function(err, db) {
-  assert.equal(null, err);
-  console.log("Connected successfully to MongoDB server");
+var updateTeamName = function(db, callback, team){
+  var collection = db.collection('score');
 
-  insertDocuments(db, function() {
-     db.close();
-   });
-
-});*/
-
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-app.use(bodyParser.json());
-
-app.use(function(req, res, next) {
-    console.log('middleware');
-    console.log("Origin: ");
-    console.log(req.body);
-    req.testing = 'testing';
-    return next();
-});
-
-app.use('/', express.static('app'));
-
-app.get('/', function(req, res, next) {
-    console.log('get route', req.testing);
-    res.end();
-});
-
-app.get('/context', function(req, res, next) {
-    console.log('YO YO YO');
-    MongoClient.connect(url, function(err, db) {
-        assert.equal(null, err);
-        console.log("Connected successfully to MongoDB server");
-
-        var scores = findScores(db, function() {
-            db.close();
-
-            console.log(scores);
-
-            res.send(scores);
-            res.end();
-        });
-
-    });
-});
+  collection.updateOne({
+    'name':team.oldName
+  }, {
+    $set: {
+      'name': team.newName
+    }
+  }, function(err, result){
+    assert.equal(err, null);
+    assert.equal(1, result.result.n);
+    console.log('Changed team name from [' + team.oldName+'] to [' + team.newName+ ']');
+  });
+}
 
 var updateScore = function(db, callback, team) {
     var collection = db.collection('score');
@@ -125,6 +97,24 @@ var updateScore = function(db, callback, team) {
         callback(result);
     });
 };
+
+app.get('/context', function(req, res, next) {
+    console.log('YO YO YO');
+    MongoClient.connect(url, function(err, db) {
+        assert.equal(null, err);
+        console.log("Connected successfully to MongoDB server");
+
+        var scores = findScores(db, function() {
+            db.close();
+
+            console.log(scores);
+
+            res.send(scores);
+            res.end();
+        });
+
+    });
+});
 
 app.put('/score', function(req, res, next) {
 
@@ -148,6 +138,26 @@ app.put('/score', function(req, res, next) {
         }, team);
 
     });
+});
+
+app.put('/team/name', function(req, res, next){
+  var team = {
+      oldName: req.query.oldName,
+      newName: req.query.newName
+  };
+
+  MongoClient.connect(url, function(err, db) {
+      assert.equal(null, err);
+      console.log("Connected successfully to MongoDB server");
+      console.log(team);
+      console.log(req);
+       updateTeamName(db, function() {
+          db.close();
+          res.end();
+      }, team);
+
+  });
+
 });
 
 var aWss = expressWs.getWss('/a');

@@ -28,31 +28,39 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
         // Sorry! No Web Storage support..
     }
 
-    if (window.localStorage.getItem("teamOneScore") === undefined || isNaN(window.localStorage.getItem("teamOneScore")) || window.localStorage.getItem("teamTwoScore") === null) {
-        window.localStorage.teamOneScore = 0;
-        $scope.teamOne = {
-            score: 0
-        };
+    // if (window.localStorage.getItem("teamOneScore") === undefined || isNaN(window.localStorage.getItem("teamOneScore")) || window.localStorage.getItem("teamTwoScore") === null) {
+    //     window.localStorage.teamOneScore = 0;
+    //     $scope.teamOne = {
+    //         score: 0
+    //     };
+    //
+    //     $scope.teamTwo = {
+    //         score: 0
+    //     };
+    // } else {
+    //     $scope.teamOne = {
+    //         score: parseInt(window.localStorage.getItem("teamOneScore"))
+    //     };
+    //     console.log($scope.teamOne);
+    // }
+    //
+    // if (window.localStorage.getItem("teamTwoScore") === undefined || isNaN(window.localStorage.getItem("teamTwoScore")) || window.localStorage.getItem("teamTwoScore") === null) {
+    //     window.localStorage.teamTwoScore = 0;
+    // } else {
+    //     $scope.teamTwo = {
+    //         score: parseInt(window.localStorage.getItem("teamTwoScore"))
+    //     };
+    //     //console.log(window.localStorage.getItem("teamTwoScore"));
+    //     //console.log(isNaN(window.localStorage.getItem("teamTwoScore")));
+    // }
 
-        $scope.teamTwo = {
-            score: 0
-        };
-    } else {
-        $scope.teamOne = {
-            score: parseInt(window.localStorage.getItem("teamOneScore"))
-        };
-        console.log($scope.teamOne);
-    }
+    $scope.teamOne = {
 
-    if (window.localStorage.getItem("teamTwoScore") === undefined || isNaN(window.localStorage.getItem("teamTwoScore")) || window.localStorage.getItem("teamTwoScore") === null) {
-        window.localStorage.teamTwoScore = 0;
-    } else {
-        $scope.teamTwo = {
-            score: parseInt(window.localStorage.getItem("teamTwoScore"))
-        };
-        //console.log(window.localStorage.getItem("teamTwoScore"));
-        //console.log(isNaN(window.localStorage.getItem("teamTwoScore")));
-    }
+    };
+
+    $scope.teamTwo = {
+
+    };
 
     $http({
         method: 'GET',
@@ -72,9 +80,6 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
-
-    $scope.teamOne.name = "Team Null Pointer Exception";
-    $scope.teamTwo.name = "Team 404";
 
     var ws = new WebSocket("ws://" + websocketPort + ":3030", "echo-protocol");
 
@@ -144,15 +149,15 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
         // $timeout(function() {
         //     $(".score-points ").removeClass('magictime puffIn');
         // }, 2000);
-        if (localStorage[team] == undefined) {
-            window.localStorage[team] = {
-                score: 0
-            };
-        }
-        console.log(team);
-        console.log(window.localStorage);
-        var storageVar = team + "Score";
-        window.localStorage[storageVar] = parseInt(window.localStorage.getItem(storageVar)) + 1;
+        // if (localStorage[team] == undefined) {
+        //     window.localStorage[team] = {
+        //         score: 0
+        //     };
+        // }
+      //  console.log(team);
+      //  console.log(window.localStorage);
+      //  var storageVar = team + "Score";
+      //  window.localStorage[storageVar] = parseInt(window.localStorage.getItem(storageVar)) + 1;
         ws.send(JSON.stringify({
             teamOne: $scope.teamOne,
             teamTwo: $scope.teamTwo
@@ -160,14 +165,39 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
     };
 
     $scope.reducePoint = function(team) {
-        window.localStorage[team + "Score"] = parseInt(window.localStorage.getItem(team + "Score")) - 1;
+      //  window.localStorage[team + "Score"] = parseInt(window.localStorage.getItem(team + "Score")) - 1;
         ws.send(JSON.stringify({
             teamOne: $scope.teamOne,
             teamTwo: $scope.teamTwo
         }));
     }
 
-    $scope.scoreSound = function() {
+    $scope.$watch('teamOne.name', function(newName, oldName){
+      if(newName && oldName){
+        console.log(newName);
+        console.log(oldName);
+        $http({
+            method: 'PUT',
+            url: '/team/name?oldName='+oldName+'&newName='+newName
+        }).then(function successCallback(response) {
+            console.log(response);
+        }, function errorCallback(response) {
+            console.error(response);
+        });
+      }
+    });
 
-    };
+    $scope.$watch('teamTwo.name', function(newName, oldName){
+      if(newName && oldName){
+        $http({
+            method: 'PUT',
+            url: '/team/name?oldName='+oldName+'&newName='+newName
+        }).then(function successCallback(response) {
+            console.log(response);
+        }, function errorCallback(response) {
+            console.error(response);
+        });
+      }
+    });
+
 });

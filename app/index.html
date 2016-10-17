@@ -31,7 +31,7 @@
                 <div class="jumbotron score">
                     <div class="title-holder col-xs-8 col-sm-12">
                         <h1 ng-click="teamOne.edit = true" ng-show="!teamOne.edit">{{teamOne.name}}</h1>
-                        <input placeholder="Enter Name" ng-model="teamOne.name" ng-show="teamOne.edit" ng-blur="teamOne.edit=false" />
+                        <input placeholder="Enter Name" ng-model="teamOne.name" ng-model-options="{ debounce: 1000 }" ng-show="teamOne.edit" ng-blur="teamOne.edit=false" />
                     </div>
                     <div class="score-holder col-xs-4 col-sm-12 ">
                       <h2 class=""><span class="pull-left score-editor" ng-click="teamOne.score = teamOne.score -1; reducePoint('teamOne')">-</span>{{teamOne.score}}<span class="pull-right score-editor" ng-click="teamOne.score = teamOne.score +1; scoreSound(); addPoint('teamOne', 0)">+</span></h2>
@@ -43,7 +43,7 @@
                     <div class="title-holder col-xs-8 col-sm-12">
 
                         <h1 ng-click="teamTwo.edit = true" ng-show="!teamTwo.edit">{{teamTwo.name}}</h1>
-                        <input placeholder="Enter Name" ng-model="teamTwo.name" ng-show="teamTwo.edit" ng-blur="teamTwo.edit=false" />
+                        <input placeholder="Enter Name" ng-model="teamTwo.name" ng-model-options="{ debounce: 1000 }" ng-show="teamTwo.edit" ng-blur="teamTwo.edit=false" />
                     </div>
                     <div class=" score-holder col-xs-4 col-sm-12">
                     <h2 class=""><span class="pull-left score-editor" ng-click="teamTwo.score = teamTwo.score -1; reducePoint('teamTwo')">-</span>{{teamTwo.score}}<span class="pull-right score-editor" ng-click="teamTwo.score = teamTwo.score +1; scoreSound(); addPoint('teamTwo', 1)">+</span></h2>
