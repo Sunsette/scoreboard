@@ -55,6 +55,19 @@ table {
 }
 
 
+
+
+/*ANIMATION*/
+
+@keyframes moveup {
+    0%   {top: 0px;}
+    25%  {top: -40vh;}
+    50%  {top: -70vh;}
+    75%  {top: -90vh;}
+    100% {top: -100vh;}
+}
+
+
 /* REST */
 
 html {
@@ -98,6 +111,14 @@ h1 {
     text-align: center;
     margin-top: -1rem;
 
+}
+
+.curtain{
+  width: 100vw;
+  height: 100vh;
+  background: #8a0526;
+  position: absolute;
+  z-index:100;
 }
 
 .main-header input {
@@ -220,6 +241,16 @@ color: #64081f;
 
 .row {
     height: 100%;
+}
+
+
+
+/*Animation classes*/
+
+.moveup{
+  -webkit-animation: moveup 5s; /* Chrome, Safari, Opera */
+animation: moveup 5s;
+top: 100vh;
 }
 
 

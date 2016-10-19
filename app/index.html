@@ -19,10 +19,11 @@
 <script src="scripts/app.js" charset="utf-8"></script>
 <script src="scripts/components/modal/modal.controller.js" charset="utf-8"></script>
 
-<body>
+<body ng-app="scoreboard" ng-controller="myCtrl">
+  <div class="curtain" ng-click="moveup = true" ng-class="{moveup: moveup}"">{{moveup}}</div>
     <div class="container-fluid">
 
-        <div class="row" ng-app="scoreboard" ng-controller="myCtrl">
+        <div class="row">
             <div class="main-header col-xs-12">
                 <h1 ng-click="game.edit = true" ng-show="!game.edit">{{game.name}}</h1>
                 <input placeholder="Enter Name" ng-model="game.name" ng-show="game.edit" ng-blur="game.edit=false" />
