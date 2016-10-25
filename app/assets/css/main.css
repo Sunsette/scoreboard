@@ -116,9 +116,33 @@ h1 {
 .curtain{
   width: 100vw;
   height: 100vh;
-  background: #8a0526;
+  /*background: #8a0526;*/
   position: absolute;
   z-index:100;
+}
+
+.upper-curtain{
+  height: 80vh;
+  background: #460b1a;
+}
+.lower-curtain{
+  height: 20vh;
+  background:url("../img/curtain_bottom.png") repeat-x;
+}
+
+.curtain h1{
+  color: #d8a91a;
+  padding-bottom: 1rem;
+  font-size: 5.5em;
+  text-shadow: 7px 11px 26px rgb(37, 37, 37);
+  margin-top: 20vh;
+}
+
+.curtain h2{
+  color: #d8a91a;
+  padding-bottom: 1rem;
+  font-size: 1.5em;
+  text-align:center;
 }
 
 .main-header input {
