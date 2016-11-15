@@ -1,7 +1,7 @@
 var app = angular.module('scoreboard', ['ui.bootstrap']);
 app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
 
-    var websocketPort = "10.129.8.123";
+    var websocketPort = "10.129.8.158";
 
     $scope.gameName = "The Grand Movie Music Quiz";
 

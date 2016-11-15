@@ -68,6 +68,9 @@
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="jumbotron score">
+                  <div class="crown-holder left" ng-show="teamOne.score > teamTwo.score">
+                    <img src="assets/img/crown.png" alt="" class="crown">
+                  </div>
                     <div class="title-holder col-xs-8 col-sm-12">
                         <h1 ng-click="teamOne.edit = true" ng-show="!teamOne.edit">{{teamOne.name}}</h1>
                         <input placeholder="Enter Name" ng-model="teamOne.name" ng-model-options="{ debounce: 1000 }" ng-show="teamOne.edit" ng-blur="teamOne.edit=false" />
@@ -79,6 +82,9 @@
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="jumbotron score">
+                  <div class="crown-holder right" ng-show="teamTwo.score > teamOne.score">
+                    <img src="assets/img/crown.png" alt="" class="crown">
+                  </div>
                     <div class="title-holder col-xs-8 col-sm-12">
 
                         <h1 ng-click="teamTwo.edit = true" ng-show="!teamTwo.edit">{{teamTwo.name}}</h1>
