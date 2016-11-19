@@ -1,0 +1,52 @@
+.basic {
+    font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+  color: #337ab7;
+  .main-header{
+    background-color: #eaeaea;
+    color: #337ab7;
+    h1{
+      color: #337ab7;
+      text-shadow: 0 0;
+    }
+  }
+  .title-holder{
+    h1{
+      color: #337ab7;
+          font-weight: bold;
+    }
+  }
+
+  .container-fluid{
+    background-color: #eaeaea;
+  }
+  .jumbotron{
+    background-color: #fff;
+    h2{
+      color: #337ab7;
+      text-shadow: 0 0;
+    }
+  }
+
+  .fa-bars {
+      color: #337ab7;
+      opacity: 0.5;
+  }
+
+  .fa-bars:hover {
+      color: #337ab7;
+      opacity: 1;
+      cursor: pointer;
+  }
+
+  .menu{
+    .dropdown-menu{
+          background-color: #337ab7;
+          color: #fff;
+          li:hover{
+            background-color: #eaeaea;
+            cursor: pointer;
+          }
+    }
+  }
+}

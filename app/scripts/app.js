@@ -1,7 +1,9 @@
 var app = angular.module('scoreboard', ['ui.bootstrap']);
 app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
 
-    var websocketPort = "10.129.8.158";
+    $scope.theme = "movie";
+
+    var websocketPort = "192.168.0.13";
 
     $scope.gameName = "The Grand Movie Music Quiz";
 
@@ -69,12 +71,12 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
         console.log(response.data[0]);
         var teams = response.data[0];
         $scope.teamOne = {
-          name:  teams[0].name,
-          score:  teams[0].score
+            name: teams[0].name,
+            score: teams[0].score
         };
         $scope.teamTwo = {
-          name: teams[1].name,
-          score: teams[1].score
+            name: teams[1].name,
+            score: teams[1].score
         };
     }, function errorCallback(response) {
         // called asynchronously if an error occurs
@@ -154,10 +156,10 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
         //         score: 0
         //     };
         // }
-      //  console.log(team);
-      //  console.log(window.localStorage);
-      //  var storageVar = team + "Score";
-      //  window.localStorage[storageVar] = parseInt(window.localStorage.getItem(storageVar)) + 1;
+        //  console.log(team);
+        //  console.log(window.localStorage);
+        //  var storageVar = team + "Score";
+        //  window.localStorage[storageVar] = parseInt(window.localStorage.getItem(storageVar)) + 1;
         ws.send(JSON.stringify({
             teamOne: $scope.teamOne,
             teamTwo: $scope.teamTwo
@@ -165,39 +167,39 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
     };
 
     $scope.reducePoint = function(team) {
-      //  window.localStorage[team + "Score"] = parseInt(window.localStorage.getItem(team + "Score")) - 1;
+        //  window.localStorage[team + "Score"] = parseInt(window.localStorage.getItem(team + "Score")) - 1;
         ws.send(JSON.stringify({
             teamOne: $scope.teamOne,
             teamTwo: $scope.teamTwo
         }));
     }
 
-    $scope.$watch('teamOne.name', function(newName, oldName){
-      if(newName && oldName){
-        console.log(newName);
-        console.log(oldName);
-        $http({
-            method: 'PUT',
-            url: '/team/name?oldName='+oldName+'&newName='+newName
-        }).then(function successCallback(response) {
-            console.log(response);
-        }, function errorCallback(response) {
-            console.error(response);
-        });
-      }
+    $scope.$watch('teamOne.name', function(newName, oldName) {
+        if (newName && oldName) {
+            console.log(newName);
+            console.log(oldName);
+            $http({
+                method: 'PUT',
+                url: '/team/name?oldName=' + oldName + '&newName=' + newName
+            }).then(function successCallback(response) {
+                console.log(response);
+            }, function errorCallback(response) {
+                console.error(response);
+            });
+        }
     });
 
-    $scope.$watch('teamTwo.name', function(newName, oldName){
-      if(newName && oldName){
-        $http({
-            method: 'PUT',
-            url: '/team/name?oldName='+oldName+'&newName='+newName
-        }).then(function successCallback(response) {
-            console.log(response);
-        }, function errorCallback(response) {
-            console.error(response);
-        });
-      }
+    $scope.$watch('teamTwo.name', function(newName, oldName) {
+        if (newName && oldName) {
+            $http({
+                method: 'PUT',
+                url: '/team/name?oldName=' + oldName + '&newName=' + newName
+            }).then(function successCallback(response) {
+                console.log(response);
+            }, function errorCallback(response) {
+                console.error(response);
+            });
+        }
     });
 
 });

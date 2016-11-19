@@ -1,0 +1,29 @@
+.movie {
+    .main-header {
+        input {
+            background: #8a0526;
+            color: #d8a91a;
+        }
+    }
+
+    .fa-bars {
+        color: #d8a91a;
+        opacity: 0.5;
+    }
+
+    .fa-bars:hover {
+        color: #d8a91a;
+        opacity: 1;
+        cursor: pointer;
+    }
+    .menu{
+      .dropdown-menu{
+            background-color: #8a0526;
+            color: #d8a91a;
+            li:hover{
+              background-color: #750722;
+              cursor: pointer;
+            }
+      }
+    }
+}

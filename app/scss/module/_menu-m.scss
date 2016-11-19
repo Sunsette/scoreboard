@@ -1,0 +1,22 @@
+.menu{
+  height: 20vh;
+  padding: 1vw;
+  display: inline-block;
+  float: right;
+  .btn-group{
+      .btn{
+        background: transparent;
+      }
+  }
+  .dropdown-toggle::after{
+    display: none;
+  }
+  .dropdown-menu{
+        background-color: #8a0526;
+            left: -84px;
+    li{
+        padding: 15px;
+    }
+
+  }
+}

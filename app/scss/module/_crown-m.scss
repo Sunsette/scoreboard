@@ -1,0 +1,25 @@
+.crown-holder {
+    position: absolute;
+    top: -50px;
+    z-index: 5;
+
+    &.left {
+        right: -36px;
+        display: inline-block;
+        max-width: 150px;
+        -ms-transform: rotate(36deg);
+        -webkit-transform: rotate(36deg);
+        transform: rotate(36deg);
+    }
+
+    &.right {
+        left: -35px;
+        -ms-transform: rotate(-36deg);
+        -webkit-transform: rotate(-36deg);
+        transform: rotate(-36deg);
+    }
+
+    .crown {
+        width: 150px;
+    }
+}
