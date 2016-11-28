@@ -1,14 +1,14 @@
 var app = angular.module('scoreboard', ['ui.bootstrap']);
-app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
+app.controller('myCtrl', function($scope,$window, $timeout, $http, $uibModal) {
 
     $scope.theme = "movie";
 
-    var websocketPort = "192.168.0.13";
+    var websocketPort = "10.131.1.189";
 
-    $scope.gameName = "The Grand Movie Music Quiz";
+    $scope.gameName = "70s, 80s & 90s Music Quiz";
 
     $scope.game = {
-        name: "The Grand Movie Music Quiz",
+        name: "70s, 80s & 90s Music Quiz",
         edit: false
     };
 
@@ -91,7 +91,8 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
 
     ws.onmessage = function(message) {
         console.log(JSON.parse(message.data));
-        if (message.data.team !== undefined) {
+        var data = JSON.parse(message.data);
+        if (data.team !== undefined) {
 
             if (!$scope.guessing) {
                 $scope.guessing = true;
@@ -135,6 +136,7 @@ app.controller('myCtrl', function($scope, $timeout, $http, $uibModal) {
     ws.onclose = function(event) {
         console.log("Connection closed by server");
         console.log(event);
+         $window.location.reload();
     };
 
     $scope.bing = function() {

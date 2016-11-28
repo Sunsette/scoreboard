@@ -20,6 +20,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-ws": "^2.0.0",
-    "mongodb": "^2.2.10"
+    "mongodb": "^2.2.10",
+    "spotify-node-applescript": "^1.0.0"
   }
 }

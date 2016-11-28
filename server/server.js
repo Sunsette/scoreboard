@@ -4,6 +4,7 @@ var expressWs = require('express-ws')(app);
 var bodyParser = require('body-parser')
 var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
+var spotify = require('spotify-node-applescript');
 
 // Connection URL
 var url = 'mongodb://localhost:27017/scoreboard';
@@ -49,14 +50,14 @@ var findScores = function(db, callback) {
         assert.equal(err, null);
         console.log("Found the following records");
         console.log(docs)
-        if(docs.name){
-          var temp = {
-            name: docs.name,
-            score: docs.score
-          };
-          scores.push(temp);
-        }else{
-        scores.push(docs);
+        if (docs.name) {
+            var temp = {
+                name: docs.name,
+                score: docs.score
+            };
+            scores.push(temp);
+        } else {
+            scores.push(docs);
         }
 
         callback(docs);
@@ -64,20 +65,20 @@ var findScores = function(db, callback) {
     return scores;
 }
 
-var updateTeamName = function(db, callback, team){
-  var collection = db.collection('score');
+var updateTeamName = function(db, callback, team) {
+    var collection = db.collection('score');
 
-  collection.updateOne({
-    'name':team.oldName
-  }, {
-    $set: {
-      'name': team.newName
-    }
-  }, function(err, result){
-    assert.equal(err, null);
-    assert.equal(1, result.result.n);
-    console.log('Changed team name from [' + team.oldName+'] to [' + team.newName+ ']');
-  });
+    collection.updateOne({
+        'name': team.oldName
+    }, {
+        $set: {
+            'name': team.newName
+        }
+    }, function(err, result) {
+        assert.equal(err, null);
+        assert.equal(1, result.result.n);
+        console.log('Changed team name from [' + team.oldName + '] to [' + team.newName + ']');
+    });
 }
 
 var updateScore = function(db, callback, team) {
@@ -140,23 +141,23 @@ app.put('/score', function(req, res, next) {
     });
 });
 
-app.put('/team/name', function(req, res, next){
-  var team = {
-      oldName: req.query.oldName,
-      newName: req.query.newName
-  };
+app.put('/team/name', function(req, res, next) {
+    var team = {
+        oldName: req.query.oldName,
+        newName: req.query.newName
+    };
 
-  MongoClient.connect(url, function(err, db) {
-      assert.equal(null, err);
-      console.log("Connected successfully to MongoDB server");
-      console.log(team);
-      console.log(req);
-       updateTeamName(db, function() {
-          db.close();
-          res.end();
-      }, team);
+    MongoClient.connect(url, function(err, db) {
+        assert.equal(null, err);
+        console.log("Connected successfully to MongoDB server");
+        console.log(team);
+        console.log(req);
+        updateTeamName(db, function() {
+            db.close();
+            res.end();
+        }, team);
 
-  });
+    });
 
 });
 
@@ -170,17 +171,36 @@ app.ws('/', function(ws, req) {
         var teamTwo = JSON.parse(msg).teamTwo;
         console.log(teamOne);
         console.log(teamTwo);
-        MongoClient.connect(url, function(err, db) {
-            assert.equal(null, err);
-            console.log("Connected successfully to MongoDB server");
+        if (teamOne !== undefined) {
 
-             updateScore(db, function() {
-            }, teamOne);
-            updateScore(db, function() {
-               db.close();
-           }, teamTwo);
+            MongoClient.connect(url, function(err, db) {
+                assert.equal(null, err);
+                console.log("Connected successfully to MongoDB server");
 
-        });
+                updateScore(db, function() {}, teamOne);
+                updateScore(db, function() {
+                    db.close();
+                }, teamTwo);
+
+            });
+        } else {
+
+            spotify.getState(function(err, state) {
+                /*
+                state = {
+                    volume: 99,
+                    position: 232,
+                    state: 'playing'
+                }
+                */
+
+                if (state.state === "playing") {
+                    spotify.playPause(function() {
+                        console.log("Toggled Spotify");
+                    });
+                }
+            });
+        }
         aWss.clients.forEach(function(client) {
             client.send(msg);
         });

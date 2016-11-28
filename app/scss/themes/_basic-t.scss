@@ -1,47 +1,48 @@
 .basic {
     font-family: 'Open Sans', sans-serif;
         font-weight: 300;
-  color: #337ab7;
+  color: #3EAF96;
   .main-header{
-    background-color: #eaeaea;
-    color: #337ab7;
+    background-color: #5a5a5a;
+    color: #3EAF96;
     h1{
-      color: #337ab7;
+      color: #3EAF96;
       text-shadow: 0 0;
     }
   }
   .title-holder{
     h1{
-      color: #337ab7;
+      color: #3EAF96;
           font-weight: bold;
     }
   }
 
   .container-fluid{
-    background-color: #eaeaea;
+    background-color: #7b7b7b;
   }
   .jumbotron{
-    background-color: #fff;
+    background-color: #eaeaea;
+        border-radius: 50%;
     h2{
-      color: #337ab7;
+      color: #3EAF96;
       text-shadow: 0 0;
     }
   }
 
   .fa-bars {
-      color: #337ab7;
+      color: #3EAF96;
       opacity: 0.5;
   }
 
   .fa-bars:hover {
-      color: #337ab7;
+      color: #3EAF96;
       opacity: 1;
       cursor: pointer;
   }
 
   .menu{
     .dropdown-menu{
-          background-color: #337ab7;
+          background-color: #3EAF96;
           color: #fff;
           li:hover{
             background-color: #eaeaea;

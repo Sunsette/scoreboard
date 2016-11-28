@@ -80,7 +80,9 @@
                 <h1 ng-click="game.edit = true" ng-show="!game.edit">{{game.name}}</h1>
                 <input placeholder="Enter Name" ng-model="game.name" ng-show="game.edit" ng-blur="game.edit=false" />
             </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-2">
+            </div>
+            <div class="col-xs-12 col-sm-4">
                 <div class="jumbotron score">
                     <div class="crown-holder left" ng-show="teamOne.score > teamTwo.score">
                         <img src="assets/img/crown.png" alt="" class="crown">
@@ -94,7 +96,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-4">
                 <div class="jumbotron score">
                     <div class="crown-holder right" ng-show="teamTwo.score > teamOne.score">
                         <img src="assets/img/crown.png" alt="" class="crown">
@@ -108,6 +110,8 @@
                         <h2 class=""><span class="pull-left score-editor" ng-click="teamTwo.score = teamTwo.score -1; reducePoint('teamTwo')">-</span>{{teamTwo.score}}<span class="pull-right score-editor" ng-click="teamTwo.score = teamTwo.score +1; scoreSound(); addPoint('teamTwo', 1)">+</span></h2>
                     </div>
                 </div>
+            </div>
+            <div class="col-xs-12 col-sm-2">
             </div>
             <div class="col-xs-12 col-sm-12 join-block" ng-show="!joined">
                 <div class="jumbotron">

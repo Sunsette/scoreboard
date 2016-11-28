@@ -70,7 +70,7 @@ h1 {
   margin-top: 15px;
   background-color: #8a0526;
   padding: 2rem 1rem;
-  min-height: 40vh; }
+  min-height: 60vh; }
 
 .container-fluid {
   background: #64081f; }
@@ -173,7 +173,8 @@ h1 {
   background-color: #64081f;
   color: #d8a91a;
   border: 0;
-  text-align: center; }
+  text-align: center;
+  max-height: 185px; }
 
 .main-header h1 {
   font-size: 5.5em;
@@ -439,35 +440,39 @@ h1 {
     .menu .dropdown-menu li {
       padding: 15px; }
 
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .menu {
+    display: none; } }
 .basic {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  color: #337ab7; }
+  color: #3EAF96; }
   .basic .main-header {
-    background-color: #eaeaea;
-    color: #337ab7; }
+    background-color: #5a5a5a;
+    color: #3EAF96; }
     .basic .main-header h1 {
-      color: #337ab7;
+      color: #3EAF96;
       text-shadow: 0 0; }
   .basic .title-holder h1 {
-    color: #337ab7;
+    color: #3EAF96;
     font-weight: bold; }
   .basic .container-fluid {
-    background-color: #eaeaea; }
+    background-color: #7b7b7b; }
   .basic .jumbotron {
-    background-color: #fff; }
+    background-color: #eaeaea;
+    border-radius: 50%; }
     .basic .jumbotron h2 {
-      color: #337ab7;
+      color: #3EAF96;
       text-shadow: 0 0; }
   .basic .fa-bars {
-    color: #337ab7;
+    color: #3EAF96;
     opacity: 0.5; }
   .basic .fa-bars:hover {
-    color: #337ab7;
+    color: #3EAF96;
     opacity: 1;
     cursor: pointer; }
   .basic .menu .dropdown-menu {
-    background-color: #337ab7;
+    background-color: #3EAF96;
     color: #fff; }
     .basic .menu .dropdown-menu li:hover {
       background-color: #eaeaea;
