@@ -460,7 +460,7 @@ h1 {
     background-color: #7b7b7b; }
   .basic .jumbotron {
     background-color: #eaeaea;
-    border-radius: 50%; }
+    min-height: 30vh; }
     .basic .jumbotron h2 {
       color: #3EAF96;
       text-shadow: 0 0; }
